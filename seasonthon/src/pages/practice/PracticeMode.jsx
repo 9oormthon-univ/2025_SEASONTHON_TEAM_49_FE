@@ -72,14 +72,14 @@ const styles = {
     minHeight: "60px",
   },
   backButton: {
-    marginTop: "70px",
+    marginTop: "50px",
     width: "100%",
-    padding: "12px 0",
+    padding: "20px 0",
     border: "none",
     borderRadius: "10px",
     backgroundColor: "#4a90e2",
     color: "white",
-    fontSize: "16px",
+    fontSize: "20px",
     cursor: "pointer",
   },
 };
