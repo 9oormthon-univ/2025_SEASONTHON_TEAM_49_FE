@@ -154,8 +154,7 @@ const Home = () => {
       {/* 하단 버튼 */}
       <ButtonGroup>
         <HomeButton onClick={() => navigate('/practice')}>연습게임</HomeButton>
-        <HomeButton onClick={() => navigate('/guide')}>설명서</HomeButton>
-        <HomeButton onClick={() => navigate('/typing')}>타자연습</HomeButton>
+        <HomeButton onClick={() => navigate('/solution')}>설명서</HomeButton>
       </ButtonGroup>
     </Container>
   );
