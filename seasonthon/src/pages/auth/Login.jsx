@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -52,12 +52,31 @@ export default function Login() {
   const navigate = useNavigate();
 
   const [name, setName] = useState("");
-  const [birth, setBirth] = useState(""); // 형식: YYYY-MM-DD
+  const [birth, setBirth] = useState(""); // YYYY-MM-DD
   const [phone, setPhone] = useState("");
   const [generatedCode, setGeneratedCode] = useState("");
   const [inputCode, setInputCode] = useState("");
 
-  // 회원가입 요청
+  // 자동 로그인 상태 확인
+  useEffect(() => {
+    const checkLoginStatus = async () => {
+      try {
+        const res = await axios.get("/api/auth/me", {
+          withCredentials: true,
+        });
+        if (res.status === 200) {
+          alert(`자동 로그인됨: ${res.data.name}님`);
+          navigate("/home");
+        }
+      } catch (error) {
+        console.log("자동 로그인 아님 (비로그인 상태)");
+      }
+    };
+
+    checkLoginStatus();
+  }, [navigate]);
+
+  // 회원가입
   const handleRegister = async () => {
     if (!name || !birth || !phone) {
       alert("모든 정보를 입력해주세요.");
@@ -70,14 +89,14 @@ export default function Login() {
         {
           name,
           phone,
-          birthDate: birth, // 주의: 'birthDate' 키로 전송
+          birthDate: birth,
         },
         {
-          withCredentials: true, // 쿠키 저장
+          withCredentials: true,
         }
       );
 
-      setGeneratedCode(response.data.memberCode); // 백엔드에서 받은 코드
+      setGeneratedCode(response.data.memberCode);
       alert("회원가입 성공!");
     } catch (error) {
       console.error("회원가입 오류:", error);
@@ -85,7 +104,7 @@ export default function Login() {
     }
   };
 
-  // 로그인 요청
+  // 로그인
   const handleLogin = async () => {
     if (!inputCode) {
       alert("회원 코드를 입력해주세요.");
@@ -99,7 +118,7 @@ export default function Login() {
           memberCode: inputCode,
         },
         {
-          withCredentials: true, // 쿠키 저장
+          withCredentials: true,
         }
       );
 
@@ -115,35 +134,16 @@ export default function Login() {
     <Container>
       <Section isTop>
         <h2>회원가입</h2>
-        <Input
-          placeholder="이름"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        <Input
-          placeholder="생년월일 (YYYY-MM-DD)"
-          value={birth}
-          onChange={(e) => setBirth(e.target.value)}
-        />
-        <Input
-          placeholder="전화번호"
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
-        />
+        <Input placeholder="이름" value={name} onChange={(e) => setName(e.target.value)} />
+        <Input placeholder="생년월일 (YYYY-MM-DD)" value={birth} onChange={(e) => setBirth(e.target.value)} />
+        <Input placeholder="전화번호" value={phone} onChange={(e) => setPhone(e.target.value)} />
         <Button onClick={handleRegister}>회원가입</Button>
-
-        {generatedCode && (
-          <MemberCodeDisplay>회원 코드: {generatedCode}</MemberCodeDisplay>
-        )}
+        {generatedCode && <MemberCodeDisplay>회원 코드: {generatedCode}</MemberCodeDisplay>}
       </Section>
 
       <Section>
         <h2>로그인</h2>
-        <Input
-          placeholder="회원 코드 입력"
-          value={inputCode}
-          onChange={(e) => setInputCode(e.target.value)}
-        />
+        <Input placeholder="회원 코드 입력" value={inputCode} onChange={(e) => setInputCode(e.target.value)} />
         <Button onClick={handleLogin}>로그인</Button>
       </Section>
     </Container>
