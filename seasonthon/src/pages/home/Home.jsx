@@ -8,7 +8,7 @@ import settingsIcon from '../../assets/settings-icon.png';
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 95vh;
   padding: 16px;
   background-color: #f0f4f8;
 `;
@@ -21,7 +21,7 @@ const Header = styled.div`
 `;
 
 const MyScore = styled.div`
-  font-size: 22px;
+  font-size: 28px;
   font-weight: bold;
   text-align: center;
   margin-bottom: 16px;
@@ -43,12 +43,12 @@ const IconButton = styled.img`
 `;
 
 const FriendsContainer = styled.div`
-  flex: 1;
+  height: 500px;
   margin-bottom: 16px;
   padding: 16px;
   border-radius: 16px;
   background-color: #ffffff;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* 카드 느낌 그림자 */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   overflow-y: auto;
 
   @media (max-width: 400px) {
@@ -70,7 +70,7 @@ const FriendItem = styled.div`
   border-radius: 10px;
   background-color: #f7f9fc;
   box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 500;
   transition: transform 0.1s;
 
@@ -99,12 +99,12 @@ const ButtonGroup = styled.div`
 const HomeButton = styled.button`
   flex: 1;
   margin: 0 6px;
-  padding: 14px 0;
+  padding: 20px 0;
   border: none;
   border-radius: 12px;
   background-color: #4a90e2;
   color: white;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: bold;
   cursor: pointer;
   transition: 0.2s;

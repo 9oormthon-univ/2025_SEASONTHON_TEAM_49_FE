@@ -279,7 +279,7 @@ export default function S_Cafe() {
               </MenuCard>
             ))}
           </MenuRow>
-          <Text>이미 선택한 메뉴 외에 추가적으로 주문할 메뉴가 있는자 물어보고 있어요</Text>
+          <Text>이미 선택한 메뉴 외에 추가적으로 주문할 메뉴가 있는지 물어보고 있어요</Text>
           <Text>미션에는 샌드위치를 추가했으므로 샌드위치 버튼을 눌러주세요</Text>  
         </>
       )}
@@ -325,7 +325,7 @@ export default function S_Cafe() {
         </ResultBox>
       )}
 
-      {/* 항상 하단에 표시되는 돌아가기 버튼 */}
+      {/* 공통 하단 버튼 */}
       {step > 0 && !showPopup && (
         <BackButton onClick={() => navigate("/solution")}>
           설명서 홈으로 돌아가기

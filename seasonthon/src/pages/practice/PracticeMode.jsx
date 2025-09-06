@@ -13,7 +13,6 @@ function PracticeMode() {
           <button style={styles.button} onClick={() => navigate("/practice/kiosk/cafe")}>카페</button>
           <button style={styles.button} onClick={() => navigate("/practice/kiosk/cinema")}>영화관</button>
           <button style={styles.button} onClick={() => navigate("/practice/kiosk/parking")}>주차정산</button>
-          <button style={styles.button} onClick={() => navigate("/practice/kiosk/self-service")}>무인발급기</button>
         </div>
       </div>
 
@@ -24,8 +23,6 @@ function PracticeMode() {
           <button style={styles.button} onClick={() => navigate("/practice/phone/gallery")}>갤러리</button>
           <button style={styles.button} onClick={() => navigate("/practice/phone/message")}>메시지</button>
           <button style={styles.button} onClick={() => navigate("/practice/phone/contacts")}>연락처</button>
-          <button style={styles.button} onClick={() => navigate("/practice/phone/internet")}>인터넷</button>
-          <button style={styles.button} onClick={() => navigate("/practice/phone/kakao")}>카카오톡</button>
         </div>
       </div>
 
@@ -64,18 +61,18 @@ const styles = {
     gap: "16px",
   },
   button: {
-  padding: "16px",       
-  fontSize: "18px",      
-  backgroundColor: "#999",
-  color: "white",
-  border: "none",
-  borderRadius: "10px",  
-  cursor: "pointer",
-  minHeight: "60px",  
+    padding: "16px",
+    height: "100px",  
+    fontSize: "18px",
+    backgroundColor: "#999",
+    color: "white",
+    border: "none",
+    borderRadius: "10px",
+    cursor: "pointer",
+    minHeight: "60px",
   },
-
   backButton: {
-    marginTop: "50px",
+    marginTop: "70px",
     width: "100%",
     padding: "12px 0",
     border: "none",

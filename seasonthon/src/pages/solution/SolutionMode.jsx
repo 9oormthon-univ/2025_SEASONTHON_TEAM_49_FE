@@ -13,7 +13,6 @@ function SolutionMode() {
           <button style={styles.button} onClick={() => navigate("/solution/kiosk/cafe")}>카페</button>
           <button style={styles.button} onClick={() => navigate("/solution/kiosk/cinema")}>영화관</button>
           <button style={styles.button} onClick={() => navigate("/solution/kiosk/parking")}>주차정산</button>
-          <button style={styles.button} onClick={() => navigate("/solution/kiosk/self-service")}>무인발급기</button>
         </div>
       </div>
 
@@ -24,8 +23,6 @@ function SolutionMode() {
           <button style={styles.button} onClick={() => navigate("/solution/phone/gallery")}>갤러리</button>
           <button style={styles.button} onClick={() => navigate("/solution/phone/message")}>메시지</button>
           <button style={styles.button} onClick={() => navigate("/solution/phone/contacts")}>연락처</button>
-          <button style={styles.button} onClick={() => navigate("/solution/phone/internet")}>인터넷</button>
-          <button style={styles.button} onClick={() => navigate("/solution/phone/kakao")}>카카오톡</button>
         </div>
       </div>
 
@@ -65,6 +62,7 @@ const styles = {
   },
   button: {
     padding: "16px",
+    height: "100px",  
     fontSize: "18px",
     backgroundColor: "#999",
     color: "white",
@@ -74,7 +72,7 @@ const styles = {
     minHeight: "60px",
   },
   backButton: {
-    marginTop: "50px",
+    marginTop: "70px",
     width: "100%",
     padding: "12px 0",
     border: "none",
