@@ -153,7 +153,7 @@ export default function Gallery() {
       {/* STEP 0: 갤러리 화면 */}
       {step === 0 && (
         <>
-          <Title>📷 내 사진</Title>
+          <Title>전체 사진</Title>
           <GalleryGrid>
             {images.map((imgObj) => (
               <ImageCard key={imgObj.name} onClick={() => handleDelete(imgObj)}>

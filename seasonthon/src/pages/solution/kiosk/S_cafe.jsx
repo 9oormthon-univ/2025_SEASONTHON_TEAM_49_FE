@@ -2,7 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
-// Styled Components (기존과 동일)
+// Styled Components
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -37,6 +37,13 @@ const MissionList = styled.ul`
   text-align: left;
   font-size: 18px;
   margin-bottom: 20px;
+`;
+
+const Text = styled.ul`
+  font-size: 20px;
+  color: #555;
+  text-align: center;
+  margin-top: 50px; 
 `;
 
 const Button = styled.button`
@@ -111,6 +118,21 @@ const ConfirmButton = styled(Button)`
 const ResultBox = styled(Popup)`
   background: #e5ffe5;
   border: 2px solid #4caf50;
+`;
+
+const BackButton = styled.button`
+  position: fixed;
+  bottom: 20px;
+  background: #666;
+  color: white;
+  border: none;
+  font-size: 18px;
+  padding: 12px 24px;
+  border-radius: 12px;
+  cursor: pointer;
+  &:hover {
+    background: #444;
+  }
 `;
 
 const StepBackButton = styled.button`
@@ -196,6 +218,9 @@ export default function S_Cafe() {
 
       {!showPopup && step === 0 && (
         <>
+          {/* STEP BACK BUTTON */}
+          {step > 0 && <StepBackButton onClick={handleStepBack}>이전 단계</StepBackButton>}
+
           <Title>주문 방식 선택</Title>
           <Button
             onClick={() => isCorrect("먹고가기") ? handleCorrectClick() : handleWrongClick()}
@@ -204,6 +229,8 @@ export default function S_Cafe() {
             먹고가기
           </Button>
           <Button onClick={handleWrongClick}>포장하기</Button>
+          <Text>매장에서 먹고 가는지 포장인지를 물어보고 있어요</Text>
+          <Text><li>미션에 해당하는 먹고가기 버튼을 눌러주세요</li></Text>
         </>
       )}
 
@@ -233,6 +260,8 @@ export default function S_Cafe() {
               </MenuCard>
             ))}
           </MenuRow>
+          <Text>원하는 음료를 물어보고 있어요</Text>
+          <Text>미션에 해당하는 아메리카노 버튼을 눌러주세요</Text>           
         </>
       )}
 
@@ -250,6 +279,8 @@ export default function S_Cafe() {
               </MenuCard>
             ))}
           </MenuRow>
+          <Text>이미 선택한 메뉴 외에 추가적으로 주문할 메뉴가 있는자 물어보고 있어요</Text>
+          <Text>미션에는 샌드위치를 추가했으므로 샌드위치 버튼을 눌러주세요</Text>  
         </>
       )}
 
@@ -263,6 +294,8 @@ export default function S_Cafe() {
             적립 안 함
           </Button>
           <Button onClick={handleWrongClick}>적립하기</Button>
+          <Text>카페에 적립을 원하는 지 물어보고 있어요</Text>
+          <Text>미션에는 적립을 하지 않는다고 했으므로 적립 안 함 버튼을 눌러주세요</Text>  
         </>
       )}
 
@@ -278,6 +311,8 @@ export default function S_Cafe() {
               {item}
             </Button>
           ))}
+          <Text>어떤 수단으로 결제할 지 물어보고 있어요</Text>
+          <Text>미션에는 신용카드로 결제한다고 했으므로 신용카드 버튼을 눌러주세요</Text>  
         </>
       )}
 
@@ -289,6 +324,13 @@ export default function S_Cafe() {
           <Button onClick={() => navigate("/solution")}>설명서 홈으로</Button>
         </ResultBox>
       )}
+
+      {/* 항상 하단에 표시되는 돌아가기 버튼 */}
+      {step > 0 && !showPopup && (
+        <BackButton onClick={() => navigate("/solution")}>
+          설명서 홈으로 돌아가기
+        </BackButton>
+      )}      
 
       {step > 0 && step !== "done" && (
         <StepBackButton onClick={() => setStep(step - 1)}>이전 단계</StepBackButton>
